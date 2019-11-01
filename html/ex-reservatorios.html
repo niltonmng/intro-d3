@@ -27,8 +27,21 @@
     </div>
     <script type="text/javascript">
       const url = 'https://apiteste.insa.gov.br/pesquisa/municipio_reservatorio'
+
       // Escreva seu código aqui
       // Existe um atributo chamado 'nome', que é o nome do reservatório
+      const promessa = d3.json(url);
+
+      promessa
+        .then(dados => {
+          d3.select('#lista-reservatorios')
+            .selectAll('li')
+            .data(dados)
+            .enter()
+            .append('li')
+              .text(elemento => elemento.nome)
+        })
+
     </script>
   </body>
 </html>
