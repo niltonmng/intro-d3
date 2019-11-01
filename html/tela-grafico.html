@@ -34,9 +34,24 @@
     </div>
     <script type="text/javascript">
 
+      const largura = 500,
+            altura = 500,
+            margem = {
+              esquerda : 10,
+              direita : 10,
+              topo : 10,
+              base : 10
+            }
+
       // const tela = cria o elemento svg dentro da div com id "visualizacao"
+      const tela = d3.select('#visualizacao')
+                     .append('svg')
+                       .attr('width', largura + margem.esquerda + margem.direita)
+                       .attr('height', altura + margem.topo + margem.base)
 
       // const grafico = cria um grupo, que vai ser o pai de todos os elementos do gráfico
+      const grafico = tela.append('g')
+                          .attr('transform', `translate(${margem.esquerda}, ${margem.topo})`)
 
       tela.insert('rect', ':first-child')
             .attr('width', '100%')
